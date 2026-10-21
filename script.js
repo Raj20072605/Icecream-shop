@@ -40,12 +40,10 @@ function displayCart() {
         row.className = "cart-row";
 
         const name = document.createElement("span");
-
         name.textContent =
             `${item.name} × ${item.quantity} = ₹${subtotal}`;
 
         const removeButton = document.createElement("button");
-
         removeButton.textContent = "Remove";
 
         removeButton.onclick = () => {
@@ -55,7 +53,6 @@ function displayCart() {
 
         row.appendChild(name);
         row.appendChild(removeButton);
-
         cartItems.appendChild(row);
     });
 
@@ -63,11 +60,11 @@ function displayCart() {
     totalElement.textContent = total;
 }
 
-async function placeOrder() {
+function placeOrder() {
     const customerName =
         document.getElementById("customer-name").value.trim();
 
-    if (!customerName) {
+    if (customerName === "") {
         alert("Please enter your name.");
         return;
     }
@@ -77,57 +74,31 @@ async function placeOrder() {
         return;
     }
 
-    const order = {
-        customerName: customerName,
+    const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
 
-        items: cart.map(item => ({
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price
-        })),
+    let orderDetails = "";
 
-        total: cart.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-        )
-    };
+    cart.forEach(item => {
+        orderDetails +=
+            `${item.name} × ${item.quantity}\n`;
+    });
 
-    try {
-        const response = await fetch(
-            "http://localhost:8080/api/orders",
-            {
-                method: "POST",
+    alert(
+        "🍦 ORDER CONFIRMED!\n\n" +
+        "Customer: " + customerName + "\n\n" +
+        "Your Order:\n" + orderDetails +
+        "\nTotal Amount: ₹" + total +
+        "\n\nThank you for choosing Sweet Scoops!"
+    );
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+    cart = [];
 
-                body: JSON.stringify(order)
-            }
-        );
+    document.getElementById("customer-name").value = "";
 
-        if (!response.ok) {
-            throw new Error("Order could not be saved.");
-        }
-
-        const result = await response.json();
-
-        alert(
-            "Order placed successfully! Order ID: " + result.id
-        );
-
-        cart = [];
-
-        document.getElementById("customer-name").value = "";
-
-        displayCart();
-
-    } catch (error) {
-        alert(
-            "Could not connect to the backend. " +
-            "Please make sure the Spring Boot server is running."
-        );
-    }
+    displayCart();
 }
 
 displayCart();
