@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f5;
+    color: #333;
+}
+
+header {
+    background: #ff7b9c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+nav {
+    background: #ffb6c8;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background: #ffe1e9;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+}
+
+.button {
+    display: inline-block;
+    background: #ff477e;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section h2 {
+    margin-bottom: 25px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    width: 230px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px #00000015;
+}
+
+.emoji {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #ff477e;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+button {
+    background: #ff477e;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: #e52f68;
+}
+
+#cart-items {
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px 0;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+}
+
+#customer-name {
+    display: block;
+    margin: 20px auto;
+    padding: 12px;
+    width: min(300px, 90%);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+footer {
+    background: #ff7b9c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+}
