@@ -1,5 +1,6 @@
 // SWEET SCOOPS AUTHENTICATION
 
+
 // USER REGISTRATION
 const registerForm = document.getElementById("register-form");
 
@@ -30,7 +31,9 @@ if (registerForm) {
             return;
         }
 
-        const users = JSON.parse(localStorage.getItem("sweetScoopsUsers") || "[]");
+        const users = JSON.parse(
+            localStorage.getItem("sweetScoopsUsers") || "[]"
+        );
 
         const existingUser = users.find(function (user) {
             return user.username.toLowerCase() === username.toLowerCase();
@@ -50,7 +53,8 @@ if (registerForm) {
         localStorage.setItem("sweetScoopsUsers", JSON.stringify(users));
 
         message.style.color = "green";
-        message.textContent = "Registration successful! Redirecting to login...";
+        message.textContent =
+            "Registration successful! Redirecting to login...";
 
         setTimeout(function () {
             window.location.href = "login.html";
@@ -70,7 +74,9 @@ if (loginForm) {
         const password = document.getElementById("password").value;
         const message = document.getElementById("message");
 
-        const users = JSON.parse(localStorage.getItem("sweetScoopsUsers") || "[]");
+        const users = JSON.parse(
+            localStorage.getItem("sweetScoopsUsers") || "[]"
+        );
 
         const matchedUser = users.find(function (user) {
             return user.username.toLowerCase() === username.toLowerCase()
@@ -78,10 +84,14 @@ if (loginForm) {
         });
 
         if (matchedUser) {
-            localStorage.setItem("sweetScoopsLoggedInUser", matchedUser.username);
+            localStorage.setItem(
+                "sweetScoopsLoggedInUser",
+                matchedUser.username
+            );
 
             message.style.color = "green";
-            message.textContent = "Login successful! Opening shop...";
+            message.textContent =
+                "Login successful! Opening shop...";
 
             setTimeout(function () {
                 window.location.href = "shop.html";
