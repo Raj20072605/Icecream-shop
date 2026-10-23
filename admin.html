@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sweet Scoops Admin Panel</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🍦 Sweet Scoops</h1>
+        <h2>Admin Dashboard</h2>
+
+        <button id="logout-btn">Logout</button>
+    </header>
+
+    <main>
+
+        <section class="dashboard">
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <p id="total-orders">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Ice Creams Sold</h3>
+                <p id="total-sold">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Sales</h3>
+                <p id="total-sales">₹0</p>
+            </div>
+
+        </section>
+
+        <section class="orders-section">
+
+            <h2>Customer Orders</h2>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Ice Creams</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orders-list">
+                        <tr>
+                            <td colspan="5">No orders available yet.</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <a href="index.html" class="home-link">
+            Back to Ice Cream Shop
+        </a>
+
+    </main>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
