@@ -1,5 +1,6 @@
 let cart = [];
 
+// ADD TO CART
 function addToCart(name, price) {
     const item = cart.find(product => product.name === name);
 
@@ -16,10 +17,14 @@ function addToCart(name, price) {
     displayCart();
 }
 
+
+// DISPLAY CART
 function displayCart() {
     const cartItems = document.getElementById("cart-items");
     const cartCount = document.getElementById("cart-count");
     const totalElement = document.getElementById("total");
+
+    if (!cartItems || !cartCount || !totalElement) return;
 
     cartItems.innerHTML = "";
 
@@ -60,6 +65,8 @@ function displayCart() {
     totalElement.textContent = total;
 }
 
+
+// PLACE ORDER
 function placeOrder() {
     const customerName =
         document.getElementById("customer-name").value.trim();
@@ -74,9 +81,51 @@ function placeOrder() {
         return;
     }
 
+    const loggedInUser =
+        localStorage.getItem("sweetScoopsLoggedInUser");
+
+    if (!loggedInUser) {
+        alert("Please register or log in before placing an order.");
+        window.location.href = "login.html";
+        return;
+    }
+
     const total = cart.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
+    );
+
+    const quantity = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+
+    const order = {
+        id: "SS" + Date.now(),
+        customer: customerName,
+        username: loggedInUser,
+        iceCreams: cart.map(item =>
+            `${item.name} × ${item.quantity}`
+        ).join(", "),
+        quantity: quantity,
+        total: total,
+        items: cart.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity
+        })),
+        date: new Date().toLocaleString()
+    };
+
+    const orders = JSON.parse(
+        localStorage.getItem("sweetScoopsOrders") || "[]"
+    );
+
+    orders.push(order);
+
+    localStorage.setItem(
+        "sweetScoopsOrders",
+        JSON.stringify(orders)
     );
 
     let orderDetails = "";
@@ -101,4 +150,13 @@ function placeOrder() {
     displayCart();
 }
 
+
+// LOGOUT USER
+function logoutUser() {
+    localStorage.removeItem("sweetScoopsLoggedInUser");
+    window.location.href = "login.html";
+}
+
+
+// INITIALIZE CART
 displayCart();
