@@ -3,19 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Scoops</title>
+    <title>Sweet Scoops - Login</title>
 </head>
 <body>
-
     <script>
-        const loggedInUser = localStorage.getItem("sweetScoopsLoggedInUser");
-
-        if (loggedInUser) {
-            window.location.replace("shop.html");
-        } else {
-            window.location.replace("login.html");
-        }
+        localStorage.removeItem("sweetScoopsLoggedInUser");
+        window.location.replace("login.html");
     </script>
-
 </body>
 </html>
