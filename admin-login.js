@@ -11,8 +11,8 @@ adminLoginForm.addEventListener("submit", function (event) {
     const message = document.getElementById("message");
 
     // Demo credentials
-    const adminUsername = "Onkar";
-    const adminPassword = "onkar@icecream";
+    const adminUsername = "admin";
+    const adminPassword = "onkar123";
 
     if (username === adminUsername && password === adminPassword) {
         sessionStorage.setItem("sweetScoopsAdminLoggedIn", "true");
