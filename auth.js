@@ -84,8 +84,9 @@ if (loginForm) {
             message.textContent = "Login successful! Opening shop...";
 
             setTimeout(function () {
-                window.location.href = "index.html";
+                window.location.href = "shop.html";
             }, 1000);
+
         } else {
             message.style.color = "red";
             message.textContent = "Invalid username or password!";
