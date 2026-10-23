@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sweet Scoops</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h1>🍦 Sweet Scoops</h1>
+        <h2>Create Account</h2>
+        <p>Register to order your favourite ice cream!</p>
+
+        <form id="register-form">
+            <input
+                type="text"
+                id="username"
+                placeholder="Choose Username"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Choose Password"
+                minlength="6"
+                required
+            >
+
+            <input
+                type="password"
+                id="confirm-password"
+                placeholder="Confirm Password"
+                minlength="6"
+                required
+            >
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p id="message"></p>
+
+        <p>Already have an account?
+            <a href="login.html">Login Here</a>
+        </p>
+
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
