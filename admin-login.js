@@ -1,30 +1,33 @@
-// SWEET SCOOPS ADMIN LOGIN
-// Demonstration only — not secure for a real website.
+document.addEventListener("DOMContentLoaded", function () {
 
-const adminLoginForm = document.getElementById("admin-login-form");
+    const adminLoginForm = document.getElementById("admin-login-form");
 
-adminLoginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+    adminLoginForm.addEventListener("submit", function (event) {
 
-    const username = document.getElementById("admin-username").value.trim();
-    const password = document.getElementById("admin-password").value;
-    const message = document.getElementById("message");
+        event.preventDefault();
 
-    // Demo credentials
-    const adminUsername = "admin";
-    const adminPassword = "onkar123";
+        const username = document.getElementById("admin-username").value.trim();
+        const password = document.getElementById("admin-password").value;
+        const message = document.getElementById("message");
 
-    if (username === adminUsername && password === adminPassword) {
-        sessionStorage.setItem("sweetScoopsAdminLoggedIn", "true");
+        if (username === "admin" && password === "onkar123") {
 
-        message.style.color = "green";
-        message.textContent = "Login successful! Opening dashboard...";
+            sessionStorage.setItem("sweetScoopsAdminLoggedIn", "true");
 
-        setTimeout(function () {
-            window.location.href = "admin.html";
-        }, 800);
-    } else {
-        message.style.color = "red";
-        message.textContent = "Invalid admin username or password!";
-    }
+            message.style.color = "green";
+            message.textContent = "Login successful! Opening dashboard...";
+
+            setTimeout(function () {
+                window.location.href = "admin.html";
+            }, 800);
+
+        } else {
+
+            message.style.color = "red";
+            message.textContent = "Invalid admin username or password!";
+
+        }
+
+    });
+
 });
